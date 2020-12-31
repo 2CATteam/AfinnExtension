@@ -1,6 +1,9 @@
 chrome.runtime.onMessage.addListener(function(request, sender) {
 	if(request.topic == "pageText") {
-		document.getElementById("output").innerHTML = "The AFINN score is " + analyze(request.text)
+		var result = analyze(request.text)
+		document.getElementById("score").innerHTML = result.sum
+		document.getElementById("words").innerHTML = result.words
+		document.getElementById("average").innerHTML = Math.round(result.sum / result.words * 1000) / 1000
 	}
 });
 
