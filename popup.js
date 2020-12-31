@@ -60,7 +60,6 @@ function analyze(string) {
 					if (afinn["lookahead"][arr[i]][arr[i + 1]]["then"] == arr[i + 2]) {
 						//Add the correct value
 						scoreSum += afinn["lookahead"][arr[i]][arr[i + 1]]["value"]
-						console.log(arr[i])
 						//Skip the two words we just looked at
 						i = i + 2
 					}
@@ -68,14 +67,12 @@ function analyze(string) {
 				} else {
 					//Add the correct value
 					scoreSum += afinn["lookahead"][arr[i]][arr[i + 1]]["value"]
-					console.log(arr[i])
 					//Skip the word we just looked at
 					i++
 				}
 			//If we don't see the word we're looking ahead for, fall back to simple check below.
 			} else if (afinn["simple"][arr[i]]) {
 				scoreSum += afinn["simple"][arr[i]]
-				console.log(arr[i])
 			}
 		//If this word is in the list, add the associated value
 		} else if (afinn["simple"][arr[i]]) {
