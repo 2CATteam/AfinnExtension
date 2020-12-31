@@ -1,6 +1,6 @@
 chrome.runtime.onMessage.addListener(function(request, sender) {
 	if(request.topic == "pageText") {
-		message.innerText = request.source;
+		message.innerText = request.text;
 	}
 });
 
