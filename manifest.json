@@ -6,7 +6,8 @@
   "permissions": [
     "pageCapture",
     "declarativeContent",
-    "activeTab"
+    "activeTab",
+    "tabs"
   ],
   "background": {
     "scripts": ["background.js"],

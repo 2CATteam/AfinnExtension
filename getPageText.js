@@ -1,4 +1,5 @@
+var ownjQuery = $.noConflict()
 chrome.runtime.sendMessage({
     topic: "pageText",
-    text: jQuery("html").text()
+    text: ownjQuery("html").text()
 })
