@@ -2,17 +2,20 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
 	if(request.topic == "pageText") {
 		var result = analyze(request.text)
 		document.getElementById("score").innerHTML = result.sum
+		document.getElementById("words").innerHTML = "With " + result.words + " words"
+		document.getElementById("average").innerHTML = Math.round(result.sum / result.words * 1000) / 1000
 		if(result.sum > 0) {
 			document.getElementById("score").style.color = "Green"
+			document.getElementById("average").style.color = "Green"
 		}
 		else if( result.sum < 0) {
 			document.getElementById("score").style.color = "Red"
+			document.getElementById("average").style.color = "Red"
 		}
 		else {
-			document.getElementById("socre").style.color = "DimGrey"
+			document.getElementById("score").style.color = "DimGrey"
+			document.getElementById("average").style.color = "DimGrey"
 		}
-		document.getElementById("words").innerHTML = "With " + result.words + " words"
-		document.getElementById("average").innerHTML = Math.round(result.sum / result.words * 1000) / 1000
 	}
 });
 
