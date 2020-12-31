@@ -1,13 +1,10 @@
 {
   "name": "Page Positivity Analyzer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Reads your pages and uses the AFINN-165 dataset to give it a positivity rating",
   "manifest_version": 2,
   "permissions": [
-    "pageCapture",
-    "declarativeContent",
-    "activeTab",
-    "tabs"
+    "activeTab"
   ],
   "browser_action": {
     "default_popup": "popup.html",
