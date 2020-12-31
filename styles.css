@@ -1,10 +1,15 @@
 * {
 	font-family: Arial;
-	font-size: 1em;
+	font-size: 12pt;
 	max-width: 100%;
 }
 
 body {
-    width: 200px;
-    height: 200px;
+    width: 400px;
+    height: 300px;
+}
+
+.errorText {
+    text-align: center;
+    color: red;
 }
