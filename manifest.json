@@ -12,16 +12,16 @@
   "browser_action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "icons/blobheart_16x16.png",
-      "32": "icons/blobheart_32x32.png",
-      "48": "icons/blobheart_48x48.png",
-      "128": "icons/blobheart_128x128.png"
+      "16": "icons/keytonheart_16x16.png",
+      "32": "icons/keytonheart_32x32.png",
+      "48": "icons/keytonheart_48x48.png",
+      "128": "icons/keytonheart_128x128.png"
     }
   },
   "icons": {
-    "16": "icons/blobheart_16x16.png",
-    "32": "icons/blobheart_32x32.png",
-    "48": "icons/blobheart_48x48.png",
-    "128": "icons/blobheart_128x128.png"
+    "16": "icons/keytonheart_16x16.png",
+    "32": "icons/keytonheart_32x32.png",
+    "48": "icons/keytonheart_48x48.png",
+    "128": "icons/keytonheart_128x128.png"
   }
 }
