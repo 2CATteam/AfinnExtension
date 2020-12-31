@@ -23,3 +23,44 @@ function onWindowLoad() {
 }
 
 window.onload = onWindowLoad; 
+
+
+function analyze(string) {
+	//Initialize cumulative score
+	var scoreSum = 0
+	//Split into words
+	var arr = string.toLowerCase().split(/\s/)
+	//Look at each word in array
+	for (var i = 0; i < arr.length; i++) {
+		//If special case where we need to look ahead
+		if (afinn["lookahead"][arr[i]]) {
+			//If we can look ahead and we see one of the special words
+			if (i + 1 < arr.length && afinn["lookahead"][arr[i]][arr[i + 1]]) {
+				//If we can look ahead and there's a third word
+				if (i + 2 < arr.length && afinn["lookahead"][arr[i]][arr[i + 1]]["then"]) {
+					//If the third word is right
+					if (afinn["lookahead"][arr[i]][arr[i + 1]]["then"] == arr[i + 2]) {
+						//Add the correct value
+						scoreSum += afinn["lookahead"][arr[i]][arr[i + 1]]["value"]
+						//Skip the two words we just looked at
+						i = i + 2
+					}
+				//If there isn't a third word
+				} else {
+					//Add the correct value
+					scoreSum += afinn["lookahead"][arr[i]][arr[i + 1]]["value"]
+					//Skip the word we just looked at
+					i++
+				}
+			//If we don't see the word we're looking ahead for, fall back to simple check below.
+			} else if (afinn["simple"][arr[i]]) {
+				scoreSum += afinn["simple"][arr[i]]
+			}
+		//If this word is in the list, add the associated value
+		} else if (afinn["simple"][arr[i]]) {
+			scoreSum += afinn["simple"][arr[i]]
+		}
+	}
+	//Return proper values
+	return {"sum": scoreSum, "words": arr.length}
+}
