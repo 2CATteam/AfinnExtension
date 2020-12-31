@@ -4,8 +4,14 @@
   "description": "Reads your pages and uses the AFINN-165 dataset to give it a positivity rating",
   "manifest_version": 2,
   "permissions": [
-    "pageCapture"
+    "pageCapture",
+    "declarativeContent",
+    "activeTab"
   ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
   "page_action": {
     "default_popup": "popup.html"
   }
