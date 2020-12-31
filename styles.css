@@ -1,0 +1,10 @@
+* {
+	font-family: Arial;
+	font-size: 1em;
+	max-width: 100%;
+}
+
+body {
+    width: 200px;
+    height: 200px;
+}
