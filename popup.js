@@ -29,7 +29,7 @@ function analyze(string) {
 	//Initialize cumulative score
 	var scoreSum = 0
 	//Split into words
-	var arr = string.toLowerCase().split(/\s/)
+	var arr = string.toLowerCase().replace(/\W/g, ' ').replace(/\s+/g, ' ').split(/\s/)
 	//Look at each word in array
 	for (var i = 0; i < arr.length; i++) {
 		//If special case where we need to look ahead
