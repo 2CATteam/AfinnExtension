@@ -1,5 +1,8 @@
 chrome.runtime.onMessage.addListener(function(request, sender) {
 	if(request.topic == "pageText") {
+		if (request.selection) {
+			document.getElementById("label").innerHTML = "The positivity score of the current selection is:"
+		}
 		var result = analyze(request.text)
 		document.getElementById("score").innerHTML = result.sum
 		document.getElementById("words").innerHTML = "With " + result.words + " words"
