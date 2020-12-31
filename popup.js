@@ -11,7 +11,7 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
 		else {
 			document.getElementById("socre").style.color = "DimGrey"
 		}
-		document.getElementById("words").innerHTML = result.words + " words"
+		document.getElementById("words").innerHTML = "With " + result.words + " words"
 		document.getElementById("average").innerHTML = Math.round(result.sum / result.words * 1000) / 1000
 	}
 });
@@ -44,6 +44,9 @@ function analyze(string) {
 	var arr = string.toLowerCase().replace(/\W/g, ' ').replace(/\s+/g, ' ').split(/\s/)
 	//Look at each word in array
 	for (var i = 0; i < arr.length; i++) {
+		if (arr[i] == "constructor" || arr[i] == "__proto__" || arr[i] == "__noSuchMethod__") {
+			continue
+		}
 		//If special case where we need to look ahead
 		if (afinn["lookahead"][arr[i]]) {
 			//If we can look ahead and we see one of the special words
@@ -54,6 +57,7 @@ function analyze(string) {
 					if (afinn["lookahead"][arr[i]][arr[i + 1]]["then"] == arr[i + 2]) {
 						//Add the correct value
 						scoreSum += afinn["lookahead"][arr[i]][arr[i + 1]]["value"]
+						console.log(arr[i])
 						//Skip the two words we just looked at
 						i = i + 2
 					}
@@ -61,18 +65,21 @@ function analyze(string) {
 				} else {
 					//Add the correct value
 					scoreSum += afinn["lookahead"][arr[i]][arr[i + 1]]["value"]
+					console.log(arr[i])
 					//Skip the word we just looked at
 					i++
 				}
 			//If we don't see the word we're looking ahead for, fall back to simple check below.
 			} else if (afinn["simple"][arr[i]]) {
 				scoreSum += afinn["simple"][arr[i]]
+				console.log(arr[i])
 			}
 		//If this word is in the list, add the associated value
 		} else if (afinn["simple"][arr[i]]) {
 			scoreSum += afinn["simple"][arr[i]]
 		}
 	}
+	console.log(scoreSum)
 	//Return proper values
 	return {"sum": scoreSum, "words": arr.length}
 }
