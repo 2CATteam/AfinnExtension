@@ -2,7 +2,7 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
 	if(request.topic == "pageText") {
 		message.innerText = request.text;
 		
-		document.getElementById("output".innerHTML="The AFINN score is " + analyze(string)
+		document.getElementById("output".innerHTML="The AFINN score is " + analyze(request.text)
 	}
 });
 
