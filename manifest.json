@@ -2,5 +2,11 @@
   "name": "AFINN Page Analyzer",
   "version": "0.1",
   "description": "Reads your pages and uses the AFINN-165 dataset to give it a positivity rating",
-  "manifest_version": 2
+  "manifest_version": 2,
+  "permissions": [
+    "pageCapture"
+  ],
+  "page_action": {
+    "default_popup": "popup.html"
+  }
 }
